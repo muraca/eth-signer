@@ -1,3 +1,4 @@
+use ethers_core::utils::to_checksum;
 use ethers_signers::{LocalWallet, Signer};
 use std::str::FromStr;
 
@@ -15,5 +16,5 @@ fn main() {
 
     let wallet = LocalWallet::from_str(private_key.as_str()).expect("Invalid private key!");
 
-    println!("Address: {:?}", wallet.address());
+    println!("Address: {}", to_checksum(&wallet.address(), None));
 }
